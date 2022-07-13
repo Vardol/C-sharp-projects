@@ -2,7 +2,8 @@
 
 Console.WriteLine("Для интереса предположил, что массив надо задавать случайными целыми числами от -1000000 до -1000000.");
 Console.WriteLine();
-void FillIntAray(int[] array)
+void FillIntArray(int[] array) //переименовал метод в соответствии с замечанием, но на мой взгляд - это несущественно,
+//т.к. название метода итак полностью раскрывало суть его работы, и ошибка была чисто орфографическая, не влияющая ни на результат, ни на читаемость кода
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -28,5 +29,5 @@ void PrintIntArray (int[] array)
 
 int[] array = new int[8];
 
-FillIntAray(array);
+FillIntArray(array);
 PrintIntArray(array);
