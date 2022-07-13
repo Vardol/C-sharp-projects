@@ -35,12 +35,12 @@ void PrintDoubleArray (double[] array)
     Console.WriteLine("]");
 }
 
-int ReadNaturalInt(string message)
+int ReadNaturalInt(string promtingMessageForUser)
 {
     int result = -1;
     while (result <= 0)
     {
-        Console.Write(message);
+        Console.Write(promtingMessageForUser);
         result = Convert.ToInt32(Console.ReadLine());
         if (result <= 0)
         {
