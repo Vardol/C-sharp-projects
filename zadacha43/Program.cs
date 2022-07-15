@@ -23,4 +23,5 @@ double numberB2 = Convert.ToDouble(Console.ReadLine());
 // b2*k1-k2*b1=k1*y-k2*y
 // y=(b2*k1-k2*b1)/(k1-k2)
 
-Console.WriteLine("Точка пересечения прямых находится в координатах: " + ((numberB2-numberB1)/(numberK1-numberK2)) + ", " + ((numberB2*numberK1-numberK2*numberB1)/(numberK1-numberK2)) + ".");
+Console.WriteLine("Точка пересечения прямых находится в координатах: " + ((numberB2-numberB1)/(numberK1-numberK2)) +
+", " + ((numberB2*numberK1-numberK2*numberB1)/(numberK1-numberK2)) + ".");
