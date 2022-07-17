@@ -1,32 +1,29 @@
 ﻿// Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 
-int ReadNaturalInt(string promtingMessageForUser)
+// Задача не указывает, кем определяется количество вводимых чисел M.
+// Поэтому изначально задача была решена через запрос у пользователя количества чисел, которые он планирует вводить.
+// Преподавателем было предложено решить задачу иначе - без запроса количества вводимых чисел и считывая их одной строкой.
+// Ниже представлено решение для введенной строки неопределенного количества чисел.
+
+long countOfPositiveNumbers = 0;
+Console.WriteLine("Введите любое количество целых чисел, разделенных любым знаком или знаками.");
+Console.WriteLine("Нули в начале числа будут проигнорированы.");
+string input = Console.ReadLine();
+
+// int of '0' character = 48
+// int of '9' character = 57
+// int of '-' character = 45
+
+for (int i = 0; i < input.Length; i++) //не испоользовал foreach, т.к. нет смысла отрабатывать каждый символ одинаково.
 {
-    int result = -1;
-    while (result <= 0)
+    if (input[i] == 48 && i < input.Length - 1)
     {
-        Console.Write(promtingMessageForUser);
-        result = Convert.ToInt32(Console.ReadLine());
-        if (result <= 0)
-        {
-            Console.WriteLine("введено ненатуральное число");
-        }
+        while (input[i] == 48 && i < input.Length - 1) i++;
     }
-    return result;
+    if (input[i] >= 49 && input[i] <= 57) countOfPositiveNumbers++;
+    if (input[i] == 45 && i < input.Length - 1) i++;
+    while ((input[i] >= 48 && input[i] <= 57)
+            && i < input.Length - 1) i++;
 }
 
-int countOfNumbers = ReadNaturalInt("Сколько чисел будем вводить? ");
-int countOfPositiveNumbers = 0;
-double currentNumber = -1;
-
-for (int i = 1; i <= countOfNumbers; i++)
-{
-    Console.Write("Введите " + i + " число - ");
-    currentNumber = Convert.ToDouble(Console.ReadLine());
-    if (currentNumber > 0) //будем считать, что ноль - это неположительное число
-    {
-        countOfPositiveNumbers++;
-    }
-}
-
-Console.WriteLine("Количество положительных чисел среди введенных - " + countOfPositiveNumbers);
+Console.WriteLine("Количество чисел больше 0 среди введенных - {0}.", countOfPositiveNumbers);
