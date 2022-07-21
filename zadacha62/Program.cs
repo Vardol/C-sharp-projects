@@ -35,7 +35,6 @@ Console.WriteLine("Программа должна спирально запол
 Console.WriteLine("Но я решил, что будет интереснее, если пользователь сможет задать размерность массива.");
 int arraySize = ReadNaturalInt("Введите натуральное число для определения размера массива - ");
 int[,] spiralArray = new int[arraySize, arraySize];
-Console.WriteLine("количество элементов массива - " + spiralArray.Length);
 int row = 0;
 int column = 0;
 int i = 0;
