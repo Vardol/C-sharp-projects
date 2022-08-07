@@ -38,14 +38,21 @@ void FillStringArrayFromConsole(string[] inputStringArray)
 
 void PrintStringArray(string[] inputStringArray)
 {
-    Console.Write("[");
-    for (int i = 0; i < inputStringArray.Length - 1; i++)
+    if (inputStringArray.Length != 0)
     {
-        Console.Write(inputStringArray[i]);
-        Console.Write(", ");
+        Console.Write("[");
+        for (int i = 0; i < inputStringArray.Length - 1; i++)
+        {
+            Console.Write(inputStringArray[i]);
+            Console.Write(", ");
+        }
+        Console.Write(inputStringArray[inputStringArray.Length - 1]);
+        Console.Write("]");
     }
-    Console.Write(inputStringArray[inputStringArray.Length - 1]);
-    Console.Write("]");
+    else
+    {
+        Console.Write("[]");
+    }
 }
 
 int CountStringsByLengthInArray(string[] inputArray, int givenMaxLength)
@@ -62,13 +69,14 @@ string[] FilterStringsArrayByMaxLength(string[] inputArray, int givenMaxLength)
 {
     string[] result = new string[CountStringsByLengthInArray(inputArray, givenMaxLength)];
     int fillingCount = 0;
-    for (int i = 0; i < result.Length; i++)
+    for (int i = 0; i < inputArray.Length; i++)
     {
         if (inputArray[i].Length <= givenMaxLength)
         {
             result[fillingCount] = inputArray[i];
             fillingCount++;
         }
+        if (fillingCount >= result.Length) break;
     }
     return result;
 }
@@ -76,13 +84,11 @@ string[] FilterStringsArrayByMaxLength(string[] inputArray, int givenMaxLength)
 
 Console.WriteLine("Программа формирует из введенного массива строк, новый массив из строк, длина которых меньше либо равна 3 символа.");
 string[] arrayOfString = new string[ReadNaturalInt("Введите натуральное число для определения количества вводимых строк (длины массива строк).")];
-
-Console.WriteLine("");
-
 FillStringArrayFromConsole(arrayOfString);
-// PrintStringArray(arrayOfString);
+
 Console.WriteLine("");
+
 Console.WriteLine("Массив отфильтрован:");
-PrintStringArray(FilterStringsArrayByMaxLength(arrayOfString,3));
-// Console.WriteLine(FilterStringsArrayByMaxLength(arrayOfString,3).Length);
+string[] filteredArray = FilterStringsArrayByMaxLength(arrayOfString,3);
+PrintStringArray(filteredArray);
 
