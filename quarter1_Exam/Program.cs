@@ -29,14 +29,11 @@ int ReadNaturalInt(string promtingMessageForUser)
 
 void FillStringArrayFromConsole(string[] inputStringArray)
 {
-    Console.Write("вводите строки по очереди: [");
-    for (int i = 0; i < inputStringArray.Length - 1; i++)
+    Console.WriteLine("Вводите строки по очереди:");
+    for (int i = 0; i < inputStringArray.Length; i++)
     {
         inputStringArray[i] = Console.ReadLine();
-        Console.Write(", ");
     }
-    inputStringArray[inputStringArray.Length - 1] = Console.ReadLine();
-    Console.Write("]");
 }
 
 void PrintStringArray(string[] inputStringArray)
@@ -83,5 +80,9 @@ string[] arrayOfString = new string[ReadNaturalInt("Введите натура�
 Console.WriteLine("");
 
 FillStringArrayFromConsole(arrayOfString);
+// PrintStringArray(arrayOfString);
+Console.WriteLine("");
+Console.WriteLine("Массив отфильтрован:");
 PrintStringArray(FilterStringsArrayByMaxLength(arrayOfString,3));
+// Console.WriteLine(FilterStringsArrayByMaxLength(arrayOfString,3).Length);
 
